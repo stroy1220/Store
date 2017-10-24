@@ -1,0 +1,28 @@
+﻿@using Project.Web.Models
+@model List<StoreModel>
+@{
+    ViewBag.Title = "CategoryView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>CategoryView</h2>
+
+<div class="container-fluid">
+    <div class="recipes row">
+        <div id="columns" data-columns="">
+            @foreach (var c in Model)
+            { 
+                <div class="panel panel-default" style="min-height: 300px;">
+                    <div class="panel-heading">
+                        <div><a href="@Url.Action("DetailView", "Store", new { id = c.ProductId })"><img class="ListImage" src="@Url.Content(c.ImageName)" /></a></div>
+                        <h3>@c.Product</h3>
+                        <h2>@c.Price.ToString("C")</h2>
+                    </div>
+                    <div class="panel-body">
+                        <p style="margin-top: 10px;">@c.Description</p>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

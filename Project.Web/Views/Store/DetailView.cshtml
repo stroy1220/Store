@@ -1,0 +1,14 @@
+﻿@using Project.Web.Models
+@model StoreModel
+@{
+    ViewBag.Title = "DetailView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>DetailView</h2>
+<p>@Model.Product</p>
+<img class="ListImage" src="@Url.Content(Model.ImageName)" />
+<p>@Model.Price</p>
+<p>@Model.Description</p>
+ 
+

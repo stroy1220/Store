@@ -1,0 +1,43 @@
+﻿@using Project.Web.Models
+@model List<StoreModel>
+@{
+    ViewBag.Title = "ListView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>View All Products</h2>
+
+<form action="@Url.Action("DetailView", "Store")" method="get">
+
+    <div class="container-fluid">
+        <div class="recipes row">
+            <div id="columns" data-columns="">
+                @foreach (StoreModel p in Model)
+                {
+                    <div class="panel panel-default" style="min-height: 300px;">
+                        <div class="panel-heading">
+                            <div>
+                                <a href="@Url.Action("DetailView", "Store", new {id = p.ProductId })">
+                                    <img class="ListImage" src="@Url.Content(p.ImageName)" />
+                                </a>
+                            </div>
+                            <h3>@p.Product</h3>
+                            <h2>@p.Price.ToString("C")</h2>
+                            <div>
+                                @if(p.Inventory <= 50)
+                                {
+                                    <h6 class="glyphicon-fire">Hot Seller</h6>
+                                }
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <p style="margin-top: 10px;">@p.Description</p>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <button>View Details</button>
+</form>
